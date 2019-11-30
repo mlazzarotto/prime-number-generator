@@ -9,8 +9,8 @@ This script can also be used as a stress test or a benchmark.
 
 ## How to use
 
-`python prime-number-generator.py`
-`python prime-number-generator.py last_number iterations`
-`python prime-number-generator.py 10000`
-`python prime-number-generator.py 10000 5`
+`python prime-number-generator.py`  
+`python prime-number-generator.py last_number iterations`  
+`python prime-number-generator.py 10000`  
+`python prime-number-generator.py 10000 5`  
 `python prime-number-generator.py help`
