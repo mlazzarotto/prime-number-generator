@@ -42,20 +42,24 @@ if len(sys.argv) == 2:
     arg1 = sys.argv[1]
     if arg1 == 'help' or arg1 == '?':
         print_help()
-    elif int(arg1) > 0:
-        last = int(arg1)
-        iterations = 1
     else:
-        sys.exit()
+        try:
+            int(arg1) > 0
+            last = int(arg1)
+            iterations = 1
+        except:
+            print("Invalid input!")
+            sys.exit()
 
 
 if len(sys.argv) == 3:
     arg1 = sys.argv[1]
     arg2 = sys.argv[2]
-    if int(arg1) >= 0 and int(arg2) >= 1:
+    try:
         last = int(arg1)
         iterations = int(arg2)
-    else:
+    except:
+        print("Invalid input!")
         sys.exit()
 
 average_time_elapsed = round(calculate_prime_numbers(last, iterations), 4)
