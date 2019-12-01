@@ -7,8 +7,8 @@ def calculate_prime_numbers(last, iterations):
     elapsed_time_sum = 0
     for i in range(iterations):
         start = time.time()
-        primes = []
-        for possiblePrime in range(2, last+1):
+        primes = [2]
+        for possiblePrime in range(3, last+1, 2):
             isPrime = True
             for num in range(2, possiblePrime):
                 if possiblePrime % num == 0:
@@ -21,6 +21,7 @@ def calculate_prime_numbers(last, iterations):
         elapsed_time = round(end-start, 4)
         elapsed_time_sum += elapsed_time
         print('Iteration: {}\nElapsed time: {}'.format(i+1, elapsed_time))
+        print(primes[0:-1])
     return(elapsed_time_sum/iterations)
 
 def print_help():
