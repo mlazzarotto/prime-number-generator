@@ -23,7 +23,7 @@ def calculate_prime_numbers(how_many, iterations):
         elapsed_time = round(end-start, 4)
         elapsed_time_sum += elapsed_time
         print('Iteration: {}\nElapsed time: {}'.format(i+1, elapsed_time))
-        print(primes[0:-1])
+        # print(primes[0:-1])
     return(elapsed_time_sum/iterations)
 
 
