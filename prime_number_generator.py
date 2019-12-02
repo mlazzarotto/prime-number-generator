@@ -1,22 +1,24 @@
-import sys, time
-
+import sys
+import time
 
 primes = []
 
-def calculate_prime_numbers(last, iterations):
+
+def calculate_prime_numbers(how_many, iterations):
     elapsed_time_sum = 0
     for i in range(iterations):
         start = time.time()
         primes = [2]
-        for possiblePrime in range(3, last+1, 2):
-            isPrime = True
-            for num in range(2, possiblePrime):
-                if possiblePrime % num == 0:
-                    isPrime = False
-                    break
-            
-            if isPrime:
-                primes.append(possiblePrime)
+        possible_prime = 3
+        while len(primes) <= how_many:
+            is_prime = True
+            for num in range(2, possible_prime):
+                if possible_prime % num == 0:
+                    is_prime = False
+            if is_prime:
+                primes.append(possible_prime)
+            possible_prime += 2
+
         end = time.time()
         elapsed_time = round(end-start, 4)
         elapsed_time_sum += elapsed_time
@@ -24,17 +26,18 @@ def calculate_prime_numbers(last, iterations):
         print(primes[0:-1])
     return(elapsed_time_sum/iterations)
 
+
 def print_help():
-    print('Hi, this script is a prime number generators. The script uses 2 values: the biggest number to try and the number of iterations.')
-    print('The first number is the biggest number to try, the second number is the number of iterations.')
+    print('Hi, this script is a prime number generators/benchmark')
+    print('The first argument is the number of prime numbers to try, the second number is the number of iterations.')
     print("You can use the following command line: 'python prime_number_generator 1000 2' or just 'python prime_number_generator' without arguments.")
     sys.exit()
 
 
 if len(sys.argv) == 1:
     try:
-        last = int(input("Type the biggest number: "))
-        iterations = int(input("Type the number of iterations: "))
+        how_many = int(input("How many numbers to generate: "))
+        iterations = int(input("How many iterations: "))
     except:
         print("Invalid input!")
         sys.exit(1)
@@ -46,7 +49,7 @@ if len(sys.argv) == 2:
     else:
         try:
             int(arg1) > 0
-            last = int(arg1)
+            how_many = int(arg1)
             iterations = 1
         except:
             print("Invalid input!")
@@ -57,11 +60,11 @@ if len(sys.argv) == 3:
     arg1 = sys.argv[1]
     arg2 = sys.argv[2]
     try:
-        last = int(arg1)
+        how_many = int(arg1)
         iterations = int(arg2)
     except:
         print("Invalid input!")
         sys.exit()
 
-average_time_elapsed = round(calculate_prime_numbers(last, iterations), 4)
+average_time_elapsed = round(calculate_prime_numbers(how_many, iterations), 4)
 print("\nAverage time elapsed: {}".format(average_time_elapsed))
