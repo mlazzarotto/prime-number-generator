@@ -22,7 +22,7 @@ def calculate_prime_numbers(how_many, iterations):
         end = time.time()
         elapsed_time = round(end-start, 4)
         elapsed_time_sum += elapsed_time
-        print('Iteration: {}\nElapsed time: {}'.format(i+1, elapsed_time))
+        print('Iteration: {}\nElapsed time: {} seconds'.format(i+1, elapsed_time))
         # print(primes[0:-1])
     return(elapsed_time_sum/iterations)
 
@@ -67,4 +67,4 @@ if len(sys.argv) == 3:
         sys.exit()
 
 average_time_elapsed = round(calculate_prime_numbers(how_many, iterations), 4)
-print("\nAverage time elapsed: {}".format(average_time_elapsed))
+print("\nAverage time elapsed: {} seconds".format(average_time_elapsed))
